@@ -2,6 +2,7 @@ Valheim Dedicated Server
 ========================
 
 .. contents::
+    :local:
 
 Introduction
 ============
@@ -65,5 +66,5 @@ How do I delete my server and make this thing stop costing me money?
 .. _WSL2: https://www.windowscentral.com/how-install-wsl2-windows-10
 .. _Terraform: https://www.terraform.io/downloads.html
 .. _Hetzner: https://www.hetzner.com/
-.. _example.tfvars:
-.. _variables.tf:
+.. _example.tfvars: example.tfvars
+.. _variables.tf: variables.tf
