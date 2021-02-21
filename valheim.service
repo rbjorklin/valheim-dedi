@@ -1,0 +1,32 @@
+[Unit]
+Description=Valheim service
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=10
+TimeoutStartSec=300
+User=valheim
+WorkingDirectory=/opt/valheim
+ExecStartPre=-/usr/bin/docker stop valheim-server
+ExecStartPre=-/usr/bin/docker rm valheim-server
+ExecStartPre=-/usr/bin/docker build --pull --ulimit nofile=2048 --tag valheim-server .
+ExecStart=/usr/bin/docker run \
+--user 1000 \
+--name valheim-server \
+-p 2456:2456/udp \
+-p 2457:2457/udp \
+-p 2458:2458/udp \
+-v /opt/valheim:/home/steam/.config/unity3d/IronGate/Valheim \
+-e NAME="\"${NAME}\"" \
+-e WORLD=${WORLD} \
+-e PASSWORD=${PASSWORD} \
+-e PUBLIC="${PUBLIC}" \
+-e PORT="${PORT}" \
+valheim-server
+ExecStop=/usr/bin/docker stop valheim-server
+
+[Install]
+WantedBy=multi-user.target
