@@ -1,8 +1,7 @@
 Valheim Dedicated Server
 ========================
 
-.. contents::
-  :local:
+.. contents:: :local:
 
 Introduction
 ============
